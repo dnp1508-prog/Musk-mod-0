@@ -28,20 +28,14 @@ class Jet:
     def rep(self):
         return(self.name, self.origin)
 
-first_item = Jet('F16', 'USA')
-second_item = Jet('SU33', 'Russia')
-third_item = Jet('AJS37', 'Sweden')
-fourth_item = Jet('MIRAGE2000', 'France')
-fifth_item = Jet('F14', 'USA')
-sixth_item = Jet('Mig29', 'USSR')
-seventh_item = Jet('A10', 'USA')
-print(first_item.rep())
-print(second_item.rep())
-print(third_item.rep())
-print(fourth_item.rep())
-print(fifth_item.rep())
-print(sixth_item.rep())
-print(seventh_item.rep())
+def rep(lista):
+    for i in lista:
+        jet = (Jet(i[0], i[1]))
+        print(jet.rep())
+lista = [('F16', 'USA'), ('SU33', 'Russia'), ('AJS37', 'Sweden'),
+        ('MIRAGE2000', 'France'), ('F14', 'USA'), ('Mig29', 'USSR'),
+        ('A10', 'USA')]
+rep(lista)
 
 # Ejercicio 3
 '''
@@ -121,8 +115,16 @@ class Estudiante:
     def media(self, grade):
         self.grade = sum(grade)//len(grade)
         return(self.grade)
-estudiante1 = Estudiante('David', 17, '2º de Bachillerato', (10, 9, 10, 9, 8, 10, 10))
-print(estudiante1.media((10, 9, 10, 9, 8, 10, 10)))
+Nombre = input('Introduce tu nombre: ')
+Edad = int(input('Introduce tu edad: '))
+Curso = input('Introduce tu curso: ')
+n = int(input('introduce el número de notas: '))
+grade = []
+for i in range(n):
+    nota = float(input('Introduce la nota {}: '.format(i+1)))
+    grade.append(nota)
+estudiante1 = Estudiante(Nombre, Edad, Curso, grade)
+print(estudiante1.media(grade))
 
 # Ejercicio 8
 '''
@@ -149,10 +151,15 @@ class Estudiante:
             if nota < 5:
                 print('Has suspendido {} con un {}'.format(asignatura, nota))
 
-notas = {
-    'Mates': 5,
-    'Historia': 3,
-    'Lengua': 4 }
+n = int(input('introduce el número de notas: '))
+materias = []
+grades = []
+for i in range(n):
+    materia = input('Introduce la asignatura: ')
+    materias.append(materia)
+    nota = float(input('Introduce la nota: '))
+    grades.append(nota)
+notas = dict(zip(materias, grades))
 Estudiante.suspensos(notas)
 
 # Ejercicio 9
